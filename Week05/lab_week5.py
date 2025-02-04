@@ -124,13 +124,14 @@ if not input_invalid:
     input("Roll for second item (Press enter)")
 
     # Lab 5 - Question 4: Collect Loot Second time
-    
+    loot_options, belt = functions_lab05.collect_loot(loot_options, belt)
 
     print("    |    You're super neat, so you organize your belt alphabetically:")
     belt.sort()
     print("    |    Your belt: ", belt)
 
     ## Lab 5 - Question 4: Use Loot
+    loot_options, health_points = functions_lab05.useloot(belt, health_points)
     
 
     print("    ------------------------------------------------------------------")
@@ -173,7 +174,7 @@ if not input_invalid:
     num_dream_lvls = input("How many dream levels do you want to go down?")
     if num_dream_lvls != 0:
         health_points -= 1
-        crazy_level = functions_lab05_solution.inception_dream(num_dream_lvls)
+        crazy_level = functions_lab05.inception_dream(num_dream_lvls)
         combat_strength += crazy_level
         print("combat strength: " + str(combat_strength))
         print("health points: " + str(health_points))
@@ -189,6 +190,13 @@ if not input_invalid:
         # Lab 5: Question 5:
         input("Roll to see who strikes first (Press Enter)")
         # Lab 5: Question 5
+        attack_roll = random.choice([1, 2, 3, 4, 5, 6])
+        if attack_roll in [1, 2, 3]:
+            print("Hero attacks first!")
+        else:
+            print("Monster attacks first!")
+
+            
         if not (attack_roll % 2 == 0):
             print("    |", end="    ")
             input("You strike (Press enter)")
