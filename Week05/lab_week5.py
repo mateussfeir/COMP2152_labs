@@ -2,7 +2,7 @@
 import random
 
 # Put all the functions into another file and import them
-import functions_lab05_solution
+import functions_lab05
 
 # Game Flow
 # Define two Dice
@@ -118,7 +118,7 @@ if not input_invalid:
     input("Roll for first item (enter)")
 
     # Lab 5 - Question 4: Collect Loot First time
-    
+    loot_options, belt = functions_lab05.collect_loot(loot_options, belt)
     print("    ------------------------------------------------------------------")
     print("    |", end="    ")
     input("Roll for second item (Press enter)")
@@ -224,9 +224,22 @@ if not input_invalid:
         print("    |", end="    ")
 
         # Lab 5 - Question 1: 
-        
+        hero_name = input("Enter Hero's name (in two words)")
+        name = hero_name.split()
+        if len(name) != 2:
+            print("  |   Please enter a name with two parts (seaparated by space)")
+            tries += 1
+        else:
+            if not name[0].isalpha() + name[1].isaplha:
+                print("  |   Please enter an alphabetical name")
+                tries += 1
+            else:
+                short_name = name[0][0:2:1] + name[0][0:1:1]
+                print("  |   I'm going to call you " + short_name + " for short")
+                input_invalid = False
+
 
     if not input_invalid:
         stars_display = "*" * num_stars
         # Lab 5 - Question 2: 
-        
+        print("   |   Hero " + short_name + " gets <" + stars_display + "> starts")
